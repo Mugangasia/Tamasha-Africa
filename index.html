@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamasha Africa - Experience Authentic African Cultures</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #E94E1B;
+            --secondary: #FFC107;
+            --dark: #4D3319;
+            --light: #FFF8E1;
+            --accent: #228B22;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header and Navigation */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1920/1080') center/cover no-repeat fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            color: white;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-scrolled {
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: var(--secondary);
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .btn:hover {
+            background-color: #d04416;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* About Section */
+        section {
+            padding: 80px 0;
+        }
+        
+        .about {
+            background-color: white;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            padding: 0 20px;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .steps-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .step {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 250px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .step h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .step p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Featured Cultures Section */
+        .featured-cultures {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/api/placeholder/1920/1080') center/cover no-repeat fixed;
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .featured-cultures .section-title {
+            color: var(--secondary);
+        }
+        
+        .culture-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .culture-tab {
+            padding: 10px 20px;
+            margin: 0 10px 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .culture-tab.active, .culture-tab:hover {
+            background-color: var(--primary);
+        }
+        
+        .culture-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: stretch;
+        }
+        
+        .culture-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .culture-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .culture-detail {
+            margin-bottom: 25px;
+        }
+        
+        .culture-detail h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .culture-detail p {
+            color: #ddd;
+        }
+        
+        .culture-traits {
+            margin-bottom: 25px;
+        }
+        
+        .trait {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .trait-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: var(--secondary);
+        }
+        
+        .culture-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+        
+        .culture-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .experience-options {
+            margin-top: 25px;
+        }
+        
+        .experience-options h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .experience-options ul {
+            list-style: none;
+        }
+        
+        .experience-options li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #ddd;
+        }
+        
+        .experience-options li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: white;
+            position: relative;
+        }
+        
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .testimonial {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: var(--light);
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .author-title {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Call to Action Section */
+        .cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/api/placeholder/1920/1080') center/cover no-repeat fixed;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: var(--secondary);
+        }
+        
+        .cta p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col p, .footer-col a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 20px 0;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .menu-btn {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 42px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .step {
+                max-width: 100%;
+                margin: 0 20px 30px;
+            }
+        }
+        
+        /* Animation Classes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+        
+        /* Custom African Pattern Decorations */
+        .pattern-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm0-12a5 5 0 1 1 0 10 5 5 0 0 1 0-10z' fill='%23E94E1B' fill-opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .pattern-divider {
+            height: 50px;
+            background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E94E1B' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            margin: -25px 0;
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-globe-africa"></i> TAMASHA <span>AFRICA</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#cultures">Cultures</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+        <div class="hero-content fade-in-up">
+            <h1>Experience Authentic African Cultures</h1>
+            <p>Immerse yourself in the vibrant traditions, music, dance, cuisine, and storytelling of Africa—right here in the US.</p>
+            <a href="#cultures" class="btn">Explore Cultures</a>
+            <a href="#contact" class="btn btn-secondary">Request a Cultural Experience</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="pattern-bg"></div>
+        <div class="container">
+            <h2 class="section-title">Welcome to Tamasha Africa</h2>
+            <div class="about-content">
+                <div class="about-text fade-in-up">
+                    <h3>Authentic Cultural Experiences</h3>
+                    <p>Whether you're an individual curious about your heritage, a school looking for cultural education, or an event organizer seeking authentic performances, <strong>Tamasha Africa brings the heart of Africa to you.</strong></p>
+                    <p>From the <strong>Maasai warriors of Kenya & Tanzania</strong> to the <strong>rhythms of West Africa</strong>, the <strong>spiritual ceremonies of the Zulu</strong>, and the <strong>colorful festivals of the Yoruba</strong>, we connect you with real cultural ambassadors who share their traditions firsthand.</p>
+                    <a href="#cultures" class="btn">Discover More</a>
+                </div>
+                <div class="about-image fade-in-up delay-1">
+                    <img src="/api/placeholder/600/400" alt="African cultural celebration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="pattern-divider"></div>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="pattern-bg"></div>
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-container">
+                <div class="step fade-in-up">
+                    <div class="step-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>Choose a Culture</h3>
+                    <p>Explore our rich selection of African ethnic groups and find the traditions that spark your interest.</p>
+                </div>
+                <div class="step fade-in-up delay-1">
+                    <div class="step-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Book an Experience</h3>
+                    <p>Select from live performances, workshops, storytelling, or culinary sessions that fit your needs.</p>
+                </div>
+                <div class="step fade-in-up delay-2">
+                    <div class="step-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Meet Culture Keepers</h3>
+                    <p>Authentic representatives bring traditions to life through personal connection.</p>
+                </div>
+                <div class="step fade-in-up delay-3">
+                    <div class="step-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Celebrate & Learn</h3>
+                    <p>Engage, ask questions, and take part in unforgettable cultural moments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="pattern-divider"></div>
+
+    <!-- Featured Cultures Section -->
+    <section id="cultures" class="featured-cultures">
+        <div class="container">
+            <h2 class="section-title">Featured Cultures</h2>
+            
+            <div class="culture-tabs">
+                <button class="culture-tab active" data-culture="maasai">The Maasai</button>
+                <button class="culture-tab" data-culture="yoruba">The Yoruba</button>
+                <button class="culture-tab" data-culture="zulu">The Zulu</button>
+            </div>
+            
+            <div class="culture-content" id="maasai-content">
+                <div class="culture-info fade-in-up">
+                    <h3>The Maasai (East Africa)</h3>
+                    
+                    <div class="culture-detail">
+                        <h4>Region</h4>
+                        <p>Kenya & Tanzania</p>
+                    </div>
+                    
+                    <div class="culture-detail">
+                        <h4>Language</h4>
+                        <p>Maa</p>
+                    </div>
+                    
+                    <div class="culture-traits">
+                        <h4>Signature Traits</h4>
+                        
+                        <div class="trait">
+                            <div class="trait-icon">🔴</div>
+                            <p>Iconic red Shuka (clothing) and beadwork</p>
+                        </div>
+                        
+                        <div class="trait">
+                            <div class="trait-icon">🦁</div>
+                            <p>Warrior (Moran) traditions & jumping dance (Adumu)</p>
+                        </div>
+                        
+                        <div class="trait">
+                            <div class="trait-icon">🏡</div>
+                            <p>Manyatta (traditional homesteads) and cattle-keeping culture</p>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-options">
+                        <h4>Experience Options</h4>
+                        <ul>
+                            <li>Maasai storytelling & folklore</li>
+                            <li>Traditional dance & song performance</li>
+                            <li>Beadwork workshop</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="culture-image fade-in-up delay-1">
+                    <img src="/api/placeholder/600/400" alt="Maasai Warriors">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="pattern-bg"></div>
+        <div class="container">
+            <h2 class="section-title">What People Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial fade-in-up">
+                    <p class="testimonial-text">"Tamasha Africa brought such incredible energy to our school's cultural diversity day. The Maasai dance performance was authentic and engaging - our students are still talking about it months later!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="/api/placeholder/100/100" alt="Sarah Johnson">
+                        </div>
+                        <p class="author-name">Sarah Johnson</p>
+                        <p class="author-title">Elementary School Principal</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial fade-in-up delay-1">
+                    <p class="testimonial-text">"The Yoruba drumming workshop we booked for our corporate team building event was both educational and exhilarating. Everyone felt the rhythm and connection to this beautiful culture."</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="/api/placeholder/100/100" alt="Marcus Chen">
+                        </div>
+                        <p class="author-name">Marcus Chen</p>
+                        <p class="author-title">HR Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="fade-in-up">Ready to Bring Africa to Your Doorstep?</h2>
+            <p class="fade-in-up delay-1">Contact us today to book a cultural experience that will leave lasting impressions!</p>
+            <a href="#contact" class="btn fade-in-up delay-2">Request an Experience</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>Tamasha Africa</h3>
+                <p>"We don't just showcase culture—we let you live it."</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> INFO@TAMASHAAFRICA.COM</p>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Cultural Lane, Suite 456, Heritage City</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="#about">About Us</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#cultures">Featured Cultures</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates on new cultural experiences and special events.</p>
+                <form>
+                    <input type="email" placeholder="Your Email" style="width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 5px;">
+                    <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2025 Tamasha Africa. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    
