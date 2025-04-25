@@ -19,6 +19,7 @@ Tamasha Africa is a cultural bridge platform that:
 - **Responsive Design**: Fully responsive layout that works on all devices
 - **Ambassador Profiles**: Detailed profiles of cultural ambassadors
 - **Testimonials**: Real feedback from past events and experiences
+- **Navigation**: Seamless navigation with home button functionality across all pages
 
 ## Technologies Used
 
